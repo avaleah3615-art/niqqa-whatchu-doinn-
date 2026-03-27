@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hey You 😏</title>
+
+<style>
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #000, #111);
+  color: white;
+  font-family: Arial;
+  text-align: center;
+  overflow: hidden;
+}
+
+.page {
+  display: none;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.active {
+  display: flex;
+  animation: fade 1s;
+}
+
+@keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 18px;
+  margin: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.next {
+  background: white;
+  color: black;
+}
+
+#yes {
+  background: green;
+  color: white;
+}
+
+#no {
+  background: red;
+  color: white;
+  position: absolute;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+  <h1>Hey...</h1>
+  <p>Ekta choto story dekhbi?</p>
+  <button class="next" onclick="nextPage(2)">Enter 😏</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+  <h1>Tor likha ekhane dibi ✍️</h1>
+  <p>Story / memory likh</p>
+  <button class="next" onclick="nextPage(3)">Next →</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+  <h1>Ar ekta part...</h1>
+  <p>Feelings likh (short + classy)</p>
+  <button class="next" onclick="nextPage(4)">Next →</button>
+</div>
+
+<!-- FINAL PAGE -->
+<div class="page" id="page4">
+  <h1>So... what do you say? 😏</h1>
+
+  <button id="yes" onclick="yesClick()">YES 😍</button>
+  <button id="no">NO 😅</button>
+</div>
+
+<script>
+
+// Page switch
+function nextPage(num) {
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.getElementById("page"+num).classList.add("active");
+}
+
+// YES → Instagram DM
+function yesClick() {
+  window.location.href = "https://ig.me/m/yourusername?text=Yes%20I%20like%20you 😏";
+}
+
+// NO button dodge
+let noBtn = document.getElementById("no");
+
+noBtn.addEventListener("mouseover", function() {
+  let x = Math.random() * (window.innerWidth - 100);
+  let y = Math.random() * (window.innerHeight - 50);
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+});
+
+// Blur effect
+noBtn.addEventListener("mouseenter", function() {
+  noBtn.style.filter = "blur(2px)";
+});
+
+noBtn.addEventListener("mouseleave", function() {
+  noBtn.style.filter = "none";
+});
+
+</script>
+
+</body>
+</html>
